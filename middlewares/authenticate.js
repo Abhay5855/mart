@@ -16,5 +16,3 @@ exports.isSignedIn = expressJwt({
   secret: "shhhhh",
   userProperty: "auth",
 });
-
-
