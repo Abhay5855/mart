@@ -8,7 +8,10 @@ const bodyParser = require("body-parser");
 var cors = require("cors");
 const app = express();
 
+
 const port = 3000;
+
+const authRoutes = require("./routes/auth");
 
 // Connect to the database
 mongoose
@@ -29,6 +32,10 @@ app.use(cookieParser());
 app.use(bodyParser.json());
 app.use(cors());
 app.use(bodyParser.urlencoded({ extended: true }));
+
+// Routers
+
+app.use("/api" , authRoutes);
 
 // Start the servers
 
