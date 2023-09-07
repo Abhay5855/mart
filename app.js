@@ -15,7 +15,7 @@ const authRoutes = require("./routes/auth");
 
 // Connect to the database
 mongoose
-  .connect("mongodb://127.0.0.1:27017/product", {
+  .connect("mongodb://127.0.0.1:27017/blog", {
     useUnifiedTopology: true,
     useNewUrlParser: true,
     useCreateIndex: true,

@@ -58,7 +58,7 @@ userScheama
 // Adding methods to the schema
 userScheama.methods = {
   authenticate: function (plainPassword) {
-    this.securePassword(plainPassword) === this.encrypt_password;
+    return this.securePassword(plainPassword) ===  this.encrypt_password;
   },
 
   securePassword: function (plainPassword) {
