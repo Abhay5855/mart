@@ -58,11 +58,11 @@ exports.login = (req, res) => {
 
 
 // Logout 
-exports.signout = (req, res) => {
+exports.signout = async(req, res) => {
 
       res.clearCookie("token");
 
-      return res.json(({
+      return res.json({
           message : "User logout successfully"
-      }))
+      });
 }

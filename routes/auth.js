@@ -2,6 +2,7 @@
 const express = require("express");
 const router = express.Router();
 const {signup, login, signout} = require("../controllers/auth");
+const { isSignedIn } = require("../middlewares/authenticate");
 
 
 // Sigup
@@ -11,6 +12,6 @@ router.post("/register" , signup);
 router.post("/login", login);
 
 // Logout 
-router.post("/logout", signout);
+router.post("/logout",  signout);
 
 module.exports = router;
