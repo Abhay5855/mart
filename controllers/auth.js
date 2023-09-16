@@ -1,13 +1,22 @@
 const User = require("../models/users/user");
 var jwt = require("jsonwebtoken");
 const {
-  userValidationSchema,
-  passwordValidationSchema,
+  userValidator,
 } = require("../validators/user");
 
 // Register user
 exports.signup = (req, res) => {
+
+
   // Error handling
+  const {error} = userValidator.validate(req.body);
+
+  if (error) {
+    console.log(error);
+    return res.status(400).json({
+      error: error.details[0].message,
+    });
+  }
 
   const user = new User(req.body);
   user.save((err, user) => {
@@ -56,13 +65,11 @@ exports.login = (req, res) => {
   });
 };
 
+// Logout
+exports.signout = async (req, res) => {
+  res.clearCookie("token");
 
-// Logout 
-exports.signout = async(req, res) => {
-
-      res.clearCookie("token");
-
-      return res.json({
-          message : "User logout successfully"
-      });
-}
+  return res.json({
+    message: "User logout successfully",
+  });
+};
